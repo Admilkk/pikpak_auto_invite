@@ -30,6 +30,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: saika2077/pikpak_auto_invite:2
+        tags: saika2077/pikpak_auto_invite:1
         platforms: linux/amd64,linux/arm64
 

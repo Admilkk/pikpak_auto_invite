@@ -12,14 +12,8 @@ import requests
 from rich import print_json
 
 DEBUG_MODE = False # Debug模式，是否打印请求返回信息
- # 代理，如果多次出现IP问题可尝试将自己所用的魔法设置为代理。例如：使用clash则设置为 'http://127.0.0.1:7890'
-def get_proxy():
-    global PROXY
-    PROXY = os.getenv('PROXY')
-    if PROXY is None:
-        PROXY = requests.get("https://api-usa.linux-do-proxy.com/get/").json().get("proxy")
-        PROXY = f"http://{PROXY}"
-        print(f"{PROXY}")
+# 代理，如果多次出现IP问题可尝试将自己所用的魔法设置为代理。例如：使用clash则设置为 'http://127.0.0.1:7890'
+PROXY = os.getenv('PROXY')
 
 # 滑块数据加密
 def r(e, t):
@@ -595,7 +589,6 @@ async def main():
     # print('本脚本是固定滑动次数,多次碰撞验证版！！')
     # print('成功与否全凭运气, 可能几次就成功, 也可能几十次都不成功, 请自行测试, 祝使用愉快!')
     try:
-        get_proxy()
         incode = os.getenv('INVITE_CODE')
         if not incode:
             print("环境变量 INVITE_CODE 未设置，请设置邀请码。")
@@ -634,7 +627,7 @@ async def main():
         exit()
     except Exception as e:
         print(f'异常捕获:{e}')
-        print('代理无效，重试中...')
+        print('发生错误，重试中...')
         await main()
 
 
