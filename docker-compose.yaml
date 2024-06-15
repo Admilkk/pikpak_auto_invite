@@ -1,9 +1,9 @@
 version: '3.3'
 services:
-    pikpak_auto_invite:
-        restart: always
-        environment:
-            - INVITE_CODE='72440102'
-#             - PROXY='http://localhost:7890'
-        container_name: pikpak_auto_invite
-        image: 'saika2077/pikpak_auto_invite:1'
+  pikpak_auto_invite:
+    restart: always
+    environment:
+      INVITE_CODE: '72440102'  # 修复环境变量的传递
+      # PROXY: 'http://localhost:7890'
+    container_name: pikpak_auto_invite
+    image: 'saika2077/pikpak_auto_invite:1'
